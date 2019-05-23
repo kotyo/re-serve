@@ -1,4 +1,4 @@
-(defproject re-serve "0.1.1"
+(defproject re-serve "0.1.2-SNAPSHOT"
   :description "re-frame like server side state handnling."
   :url "https://github.com/kotyo/re-serve"
   :license {:name "EPL-2.0"
