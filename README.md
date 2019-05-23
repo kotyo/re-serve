@@ -29,49 +29,75 @@ Require `[re-frame.core :as re-frame]` where it is needed.
 
 ## API (re-frame.core)
 ### Session handling
-#####`(start-session & {:keys [teardown-event]})`
+`(start-session & {:keys [teardown-event]})`
+
 Start and return a *re-serve* session with an empty db. It takes an optional `teardown-event` which dispatched as the last event after the termination of the session.
-#####`(stop-session session)`
+
+`(stop-session session)`
+
 Terminate the *re-serve* session.
 
 ### Dispatching
-#####`(dispatch session event)`
+`(dispatch session event)`
+
 Dispatche the `event` vector on the gives `session`.
-#####`(dispatch-sync session event)`
+
+`(dispatch-sync session event)`
+
 The same as the previous dispatch call, but it waits until the `event` is enqueued for processing.
 
 ### Effects
-#####`(reg-fx id handler)`
+`(reg-fx id handler)`
+
 Register an effect `handler` for the given `id`.
-#####`(clear-fx id)`
+
+`(clear-fx id)`
+
 Clear an effect registration.
-#####`(reg-fx-session id handler)`
+
+`(reg-fx-session id handler)`
+
 Register an effect `handler` for the given `id`. The effect handlers got the *session-context* as the first parameter and need to return with the updated *session-context*. Only for experimental usage.
 
 #### Additional built-in effects
-#####`:attach {:keys [chan dispatch]}`
-Attache a `core.async` channel to the session. That means *dispatch* event will be dispatched when there is a message available on the *chan*. 
-#####`:detach chan`
-Detache the channel from the session.
-#####`:stop-session _`
+`:attach {:keys [chan dispatch]}`
+
+Attach a `core.async` channel to the session. That means *dispatch* event will be dispatched when there is a message available on the *chan*. 
+
+`:detach chan`
+
+Detach the channel from the session.
+
+`:stop-session _`
+
 Stop the session.
 
 ### Co-Effects
-#####`(reg-cofx id handler)`
+`(reg-cofx id handler)`
+
 Register a new coeffects.
-#####`(inject-cofx id) (inject-cofx id value)`
+
+`(inject-cofx id) (inject-cofx id value)`
+
 Create an interceptor from the previously registered coeffect.
-#####`(clear-cofx id)`
+
+`(clear-cofx id)`
+
 Clear a coeffect registration.
 
 ### Events
-#####`(reg-event-db id handler) (reg-event-db id interceptors handler)`
+`(reg-event-db id handler) (reg-event-db id interceptors handler)`
+
 Register the given event *handler* function for the given event *id*.
 *handler* is a function: (db event) -> db.
-#####`(reg-event-fx id handler) (reg-event-fx id interceptors handler)`
+
+`(reg-event-fx id handler) (reg-event-fx id interceptors handler)`
+
 Register the given event *handler* function for the given event *id*.
 *handler* is a function: (coeffects-map event-vector) -> effects-map.
-#####`(reg-event-ctx id handler) (reg-event-ctx id interceptors handler)`
+
+`(reg-event-ctx id handler) (reg-event-ctx id interceptors handler)`
+
 Register the given event *handler* function for the given event *id*.
 *handler* is a function: (context-map event-vector) -> context-map.
 
