@@ -6,7 +6,7 @@
                  [haslett "0.1.6"]
                  [org.clojure/core.async "0.4.490"]
                  [http-kit "2.3.0"]
-                 [re-serve "0.1.0"]]
+                 [re-serve "0.1.1"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]]
 
