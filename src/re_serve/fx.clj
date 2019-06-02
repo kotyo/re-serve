@@ -104,7 +104,7 @@
  :attach
  (fn [session value-map]
    (reduce (fn [sess {:keys [chan dispatch] :as effect}]
-             (if (or (empty? dispatch) (not (instance? ManyToManyChannel dispatch)))
+             (if (or (empty? dispatch) (not (instance? ManyToManyChannel chan)))
                (do (console :error "re-serve: Ignoring bad attach value:" effect)
                    sess)
                (do (when (get-in sess [:event-sources chan])
