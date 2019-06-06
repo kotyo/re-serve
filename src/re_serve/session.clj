@@ -23,7 +23,8 @@
     (async/go-loop [session {:db {}
                              :dispatch-chan dispatch-chan
                              :event-sources {}}]
-      (let [[val port] (async/alts! (conj (keys (:event-sources session)) dispatch-chan))]
+      (let [[val port] (async/alts! (conj (keys (:event-sources session)) dispatch-chan)
+                                    :priority true)]
         (cond
           (not= port dispatch-chan) (recur (cond-> (handle-event-source session val port)
                                              (nil? val)
