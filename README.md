@@ -22,7 +22,7 @@ You can find examples in the [examples](https://github.com/kotyo/re-serve/tree/m
 
 ## Usage
 Add 
-`[re-frame "0.1.0"]`
+[![Clojars Project](https://img.shields.io/clojars/v/re-serve.svg)](https://clojars.org/re-serve)
 to your dependencies.
 
 Require `[re-frame.core :as re-frame]` where it is needed.
